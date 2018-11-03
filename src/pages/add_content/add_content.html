@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Add photo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Photo</h3>
+
+  <div class="popup-menu">
+    <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+    <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
+    <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+      <div class="popup-menu-item" (click)="goToHome()">
+        <ion-icon name="home"></ion-icon>
+        <span>HOME</span>
+      </div>
+      <div class="popup-menu-item" (click)="goSearch()">
+        <ion-icon name="search"></ion-icon>
+        <span>SEARCH</span>
+      </div>
+      <div class="popup-menu-item" (click)="goToProfile()">
+        <ion-icon name="ionitron"></ion-icon>
+        <span>PROFILE</span>
+      </div>
+      <div class="popup-menu-item" (click)="goToFavoris()">
+        <ion-icon name="heart"></ion-icon>
+        <span>FAVORIS</span>
+      </div>
+      <div class="popup-menu-item" (click)="goToAdd()">
+        <ion-icon name="add-circle"></ion-icon>
+        <span>ADD</span>
+      </div>
+    </div>
+  </div>
+</ion-content>
