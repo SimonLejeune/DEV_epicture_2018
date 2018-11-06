@@ -10,6 +10,9 @@
 <ion-content padding>
   <h3>Photo</h3>
 
+  <button ion-button (click)="takephoto()">take photo</button>
+  <p align="center"><img src="{{ myphoto }}"></p>
+
   <div class="popup-menu">
     <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
     <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
