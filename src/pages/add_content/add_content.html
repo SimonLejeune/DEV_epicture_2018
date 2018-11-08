@@ -10,33 +10,43 @@
 <ion-content padding>
   <h3>Photo</h3>
 
-  <button ion-button (click)="takephoto()">take photo</button>
-  <p align="center"><img src="{{ myphoto }}"></p>
-
-  <div class="popup-menu">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6>
+                <button block ion-button color="primary" (click)="pictureFromCamera()">Camera</button>
+            </ion-col>
+            <ion-col col-6>
+                <button block ion-button color="primary" (click)="pictureFromGallery()">Photo Gallery</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <img *ngIf="myphoto" [src]="myphoto" alt="">
+</ion-content>
+<ion-footer>
+    <div class="popup-menu">
     <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
     <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
     <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
-      <div class="popup-menu-item" (click)="goToHome()">
-        <ion-icon name="home"></ion-icon>
-        <span>HOME</span>
-      </div>
-      <div class="popup-menu-item" (click)="goSearch()">
-        <ion-icon name="search"></ion-icon>
-        <span>SEARCH</span>
-      </div>
-      <div class="popup-menu-item" (click)="goToProfile()">
-        <ion-icon name="ionitron"></ion-icon>
-        <span>PROFILE</span>
-      </div>
-      <div class="popup-menu-item" (click)="goToFavoris()">
-        <ion-icon name="heart"></ion-icon>
-        <span>FAVORIS</span>
-      </div>
-      <div class="popup-menu-item" (click)="goToAdd()">
-        <ion-icon name="add-circle"></ion-icon>
-        <span>ADD</span>
-      </div>
+        <div class="popup-menu-item" (click)="goToHome()">
+            <ion-icon name="home"></ion-icon>
+            <span>HOME</span>
+        </div>
+        <div class="popup-menu-item" (click)="goSearch()">
+            <ion-icon name="search"></ion-icon>
+            <span>SEARCH</span>
+        </div>
+        <div class="popup-menu-item" (click)="goToProfile()">
+            <ion-icon name="ionitron"></ion-icon>
+            <span>PROFILE</span>
+        </div>
+        <div class="popup-menu-item" (click)="goToFavoris()">
+            <ion-icon name="heart"></ion-icon>
+            <span>FAVORIS</span>
+        </div>
+        <div class="popup-menu-item" (click)="goToAdd()">
+            <ion-icon name="add-circle"></ion-icon>
+            <span>ADD</span>
+        </div>
     </div>
-  </div>
-</ion-content>
+</div>
+</ion-footer>
