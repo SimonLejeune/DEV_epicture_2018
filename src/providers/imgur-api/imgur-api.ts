@@ -22,10 +22,10 @@ export class ImgurApiProvider {
                 this.token = event.url.slice(event.url.indexOf('access_token=') + 'access_token='.length);
                 // here is your token, now you can close the InAppBrowser
                 browserRef.close();
-                return (this.token)
+                // return (this.token)
             }
         })
-        // return Promise.resolve(this.token)
+        return Promise.resolve(this.token)
     }
 
     getAccountBase() {

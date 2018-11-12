@@ -14,7 +14,6 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {Camera} from '@ionic-native/camera'
 import {HttpClientModule} from '@angular/common/http';
 import {ImgurApiProvider} from '../providers/imgur-api/imgur-api';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
     declarations: [
@@ -44,7 +43,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
         StatusBar,
         SplashScreen,
         Camera,
-        InAppBrowser,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         ImgurApiProvider
     ]
