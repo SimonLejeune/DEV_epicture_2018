@@ -12,6 +12,9 @@ import {Add_ContentPage} from "../pages/add_content/add_content";
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {Camera} from '@ionic-native/camera'
+import {HttpClientModule} from '@angular/common/http';
+import {ImgurApiProvider} from '../providers/imgur-api/imgur-api';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
     declarations: [
@@ -24,6 +27,7 @@ import {Camera} from '@ionic-native/camera'
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         IonicModule.forRoot(MyApp),
         IonicImageViewerModule
     ],
@@ -40,7 +44,9 @@ import {Camera} from '@ionic-native/camera'
         StatusBar,
         SplashScreen,
         Camera,
-        {provide: ErrorHandler, useClass: IonicErrorHandler}
+        InAppBrowser,
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        ImgurApiProvider
     ]
 })
 export class AppModule {
