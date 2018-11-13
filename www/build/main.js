@@ -38,9 +38,96 @@ webpackEmptyAsyncContext.id = 183;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConnectionPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connection_service__ = __webpack_require__(249);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ConnectionPage = /** @class */ (function () {
+    function ConnectionPage(navCtrl, navParams, connectionService) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.connectionService = connectionService;
+    }
+    ConnectionPage.prototype.login_in = function () {
+        this.token = this.connectionService.connection();
+        return (this.token);
+    };
+    ConnectionPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-connect',template:/*ion-inline-start:"/home/maximilien/rendu/app/DEV_epicture_2018/src/pages/connection/connect.html"*/'<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <title>Title</title>\n</head>\n<body>\n    <button (click)="login_in()">\n        <ion-icon name="menu"></ion-icon>\n    </button>\n</body>\n</html>'/*ion-inline-end:"/home/maximilien/rendu/app/DEV_epicture_2018/src/pages/connection/connect.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__connection_service__["a" /* ConnectionService */]])
+    ], ConnectionPage);
+    return ConnectionPage;
+}());
+
+//# sourceMappingURL=connection.js.map
+
+/***/ }),
+
+/***/ 249:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConnectionService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+//f2f718cb46cb777
+//5af377ae445d2a1
+var ConnectionService = /** @class */ (function () {
+    function ConnectionService() {
+        this.url = 'https://api.imgur.com/';
+        this.clientId = '5af377ae445d2a1';
+    }
+    ConnectionService.prototype.connection = function () {
+        var _this = this;
+        var oauth = open(this.url + 'oauth2/authorize?client_id=' + this.clientId + '&response_type=token', '_self', 'location=no');
+        oauth.addEventListener("loadstart", function (event) {
+            if ((event.url).indexOf('access_token') !== -1) {
+                _this.token = event.url.slice(event.url.indexOf('access_token=') + 'access_token='.length);
+                oauth.close();
+                return (_this.token);
+            }
+            else {
+                console.log("Error loging in");
+            }
+        });
+    };
+    ConnectionService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
+    ], ConnectionService);
+    return ConnectionService;
+}());
+
+//# sourceMappingURL=connection.service.js.map
+
+/***/ }),
+
+/***/ 250:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(258);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -48,7 +135,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 256:
+/***/ 258:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56,8 +143,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_img_viewer__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_img_viewer__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(403);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_search_search__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_favoris_favoris__ = __webpack_require__(48);
@@ -66,12 +153,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_status_bar__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_splash_screen__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_camera__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_connection_connection_service__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_connection_connection__ = __webpack_require__(248);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -96,7 +187,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__pages_search_search__["a" /* SearchPage */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_favoris_favoris__["a" /* FavorisPage */],
                 __WEBPACK_IMPORTED_MODULE_8__pages_profile_profile__["a" /* ProfilePage */],
-                __WEBPACK_IMPORTED_MODULE_9__pages_add_content_add_content__["a" /* Add_ContentPage */]
+                __WEBPACK_IMPORTED_MODULE_9__pages_add_content_add_content__["a" /* Add_ContentPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_connection_connection__["a" /* ConnectionPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -112,12 +204,14 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__pages_search_search__["a" /* SearchPage */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_favoris_favoris__["a" /* FavorisPage */],
                 __WEBPACK_IMPORTED_MODULE_8__pages_profile_profile__["a" /* ProfilePage */],
-                __WEBPACK_IMPORTED_MODULE_9__pages_add_content_add_content__["a" /* Add_ContentPage */]
+                __WEBPACK_IMPORTED_MODULE_9__pages_add_content_add_content__["a" /* Add_ContentPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_connection_connection__["a" /* ConnectionPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_10__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_11__ionic_native_splash_screen__["a" /* SplashScreen */],
                 __WEBPACK_IMPORTED_MODULE_12__ionic_native_camera__["a" /* Camera */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_connection_connection_service__["a" /* ConnectionService */],
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* IonicErrorHandler */] }
             ]
         })
@@ -129,7 +223,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 401:
+/***/ 403:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -143,6 +237,7 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_favoris_favoris__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_profile_profile__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_add_content_add_content__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_connection_connection__ = __webpack_require__(248);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -152,6 +247,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -174,7 +270,8 @@ var MyApp = /** @class */ (function () {
             { title: 'Search', component: __WEBPACK_IMPORTED_MODULE_4__pages_search_search__["a" /* SearchPage */] },
             { title: 'Profile', component: __WEBPACK_IMPORTED_MODULE_7__pages_profile_profile__["a" /* ProfilePage */] },
             { title: 'Add photo', component: __WEBPACK_IMPORTED_MODULE_8__pages_add_content_add_content__["a" /* Add_ContentPage */] },
-            { title: 'Favoris', component: __WEBPACK_IMPORTED_MODULE_6__pages_favoris_favoris__["a" /* FavorisPage */] }
+            { title: 'Favoris', component: __WEBPACK_IMPORTED_MODULE_6__pages_favoris_favoris__["a" /* FavorisPage */] },
+            { title: 'Connect', component: __WEBPACK_IMPORTED_MODULE_9__pages_connection_connection__["a" /* ConnectionPage */] }
         ];
     }
     MyApp.prototype.initializeApp = function () {
@@ -565,7 +662,7 @@ var Add_ContentPage = /** @class */ (function () {
     };
     Add_ContentPage = Add_ContentPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/maximilien/rendu/app/DEV_epicture_2018/src/pages/add_content/add_content.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Add photo</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h3>Photo</h3>\n\n    <img *ngIf="myphoto" [src]="myphoto" alt="">\n\n    <ion-grid>\n        <ion-row>\n            <ion-col col-6>\n                <button block ion-button color="primary" (click)="pictureFromCamera()">Camera</button>\n            </ion-col>\n            <ion-col col-6>\n                <button block ion-button color="primary" (click)="pictureFromGallery()">Photo Gallery</button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n</ion-content>\n<ion-footer>\n\n    <div class="popup-menu">\n    <div class="popup-menu-overlay" [ngClass]="{\'in\': openMenu}" (click)="togglePopupMenu()"></div>\n    <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{\'out\': openMenu}"></div>\n    <div class="popup-menu-panel" [ngClass]="{\'in\': openMenu}">\n        <div class="popup-menu-item" (click)="goToHome()">\n            <ion-icon name="home"></ion-icon>\n            <span>HOME</span>\n        </div>\n        <div class="popup-menu-item" (click)="goSearch()">\n            <ion-icon name="search"></ion-icon>\n            <span>SEARCH</span>\n        </div>\n        <div class="popup-menu-item" (click)="goToProfile()">\n            <ion-icon name="ionitron"></ion-icon>\n            <span>PROFILE</span>\n        </div>\n        <div class="popup-menu-item" (click)="goToFavoris()">\n            <ion-icon name="heart"></ion-icon>\n            <span>FAVORIS</span>\n        </div>\n        <div class="popup-menu-item" (click)="goToAdd()">\n            <ion-icon name="add-circle"></ion-icon>\n            <span>ADD</span>\n        </div>\n    </div>\n</div>\n</ion-footer>'/*ion-inline-end:"/home/maximilien/rendu/app/DEV_epicture_2018/src/pages/add_content/add_content.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/maximilien/rendu/app/DEV_epicture_2018/src/pages/add_content/add_content.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Add photo</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h3>Photo</h3>\n\n    <ion-grid>\n        <ion-row>\n            <ion-col col-6>\n                <button block ion-button color="primary" (click)="pictureFromCamera()">Camera</button>\n            </ion-col>\n            <ion-col col-6>\n                <button block ion-button color="primary" (click)="pictureFromGallery()">Photo Gallery</button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n    <img *ngIf="myphoto" [src]="myphoto" alt="">\n</ion-content>\n<ion-footer>\n    <div class="popup-menu">\n    <div class="popup-menu-overlay" [ngClass]="{\'in\': openMenu}" (click)="togglePopupMenu()"></div>\n    <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{\'out\': openMenu}"></div>\n    <div class="popup-menu-panel" [ngClass]="{\'in\': openMenu}">\n        <div class="popup-menu-item" (click)="goToHome()">\n            <ion-icon name="home"></ion-icon>\n            <span>HOME</span>\n        </div>\n        <div class="popup-menu-item" (click)="goSearch()">\n            <ion-icon name="search"></ion-icon>\n            <span>SEARCH</span>\n        </div>\n        <div class="popup-menu-item" (click)="goToProfile()">\n            <ion-icon name="ionitron"></ion-icon>\n            <span>PROFILE</span>\n        </div>\n        <div class="popup-menu-item" (click)="goToFavoris()">\n            <ion-icon name="heart"></ion-icon>\n            <span>FAVORIS</span>\n        </div>\n        <div class="popup-menu-item" (click)="goToAdd()">\n            <ion-icon name="add-circle"></ion-icon>\n            <span>ADD</span>\n        </div>\n    </div>\n</div>\n</ion-footer>'/*ion-inline-end:"/home/maximilien/rendu/app/DEV_epicture_2018/src/pages/add_content/add_content.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */]])
     ], Add_ContentPage);
@@ -857,5 +954,5 @@ var FavorisPage = /** @class */ (function () {
 
 /***/ })
 
-},[248]);
+},[250]);
 //# sourceMappingURL=main.js.map

@@ -11,7 +11,10 @@ import {Add_ContentPage} from "../pages/add_content/add_content";
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {Camera} from '@ionic-native/camera'
+import {Camera} from '@ionic-native/camera';
+import {ConnectionService} from '../pages/connection/connection.service';
+import {ConnectionPage} from '../pages/connection/connection';
+
 
 @NgModule({
     declarations: [
@@ -20,7 +23,8 @@ import {Camera} from '@ionic-native/camera'
         SearchPage,
         FavorisPage,
         ProfilePage,
-        Add_ContentPage
+        Add_ContentPage,
+        ConnectionPage
     ],
     imports: [
         BrowserModule,
@@ -34,12 +38,14 @@ import {Camera} from '@ionic-native/camera'
         SearchPage,
         FavorisPage,
         ProfilePage,
-        Add_ContentPage
+        Add_ContentPage,
+        ConnectionPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         Camera,
+        ConnectionService,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })
