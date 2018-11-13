@@ -142,7 +142,6 @@ export class ProfilePage {
     }
 
     getToken(){
-        // this.ImgurApiProvider.getToken();
         this.ImgurApiProvider.getToken().then(data => {
             this.token = data;
         })

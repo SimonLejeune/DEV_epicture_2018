@@ -29,7 +29,6 @@ export class ImgurApiProvider {
             }
         })
         return Promise.resolve(this.token)
-
     }
 
     getAccountBase(): Promise<any> {
@@ -48,13 +47,38 @@ export class ImgurApiProvider {
                 'Authorization': 'Client-ID 025ed260d215c47'
             })
         };
-        return new Promise(resolve => {
-            this.http.get(this.baseUrl + '3/tags', httpOptions).subscribe(data => {
-                resolve(data);
-            }, err => {
-                console.log(err);
-            });
-        });
+
+        return this.http.get(this.baseUrl + '3/tags', httpOptions).toPromise().then(ImgurApiProvider.extractData)
+    }
+
+    getHomeGallery(){
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Client-ID 025ed260d215c47'
+            })
+        };
+
+        return this.http.get(this.baseUrl + '3/gallery/hot/time/0/0', httpOptions).toPromise().then(ImgurApiProvider.extractData)
+    }
+
+    search(query: string): Promise<any>{
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Client-ID 025ed260d215c47'
+            })
+        };
+
+        return this.http.get(this.baseUrl + '3/gallery/search/top/0?q=' + query, httpOptions).toPromise().then(ImgurApiProvider.extractData);
+    }
+
+    getFavorite(){
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Client-ID 025ed260d215c47'
+            })
+        };
+
+        return this.http.get(this.baseUrl + '3/account/Rototote/favorites/0', httpOptions).toPromise().then(ImgurApiProvider.extractData)
     }
 
     constructor(public http: HttpClient) {
