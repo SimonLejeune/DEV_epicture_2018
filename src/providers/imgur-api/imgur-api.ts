@@ -1,6 +1,5 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {HttpHeaders} from '@angular/common/http';
 
 /*
   Generated class for the ImgurApiProvider provider.
@@ -15,6 +14,10 @@ export class ImgurApiProvider {
     private clientId: string = "025ed260d215c47";
     private clientSecret: string = "ec5590992f4cd34e6fc1435b03304485cdc2035d";
 
+    private static extractData(res: Response) {
+        return res["data"] || {};
+    }
+
     getToken() {
         let browserRef = window.open(this.baseUrl + 'oauth2/authorize?client_id=025ed260d215c47&response_type=token', '_blank', 'location=no');
         browserRef.addEventListener("loadstart", (event: any) => {
@@ -26,23 +29,18 @@ export class ImgurApiProvider {
             }
         })
         return Promise.resolve(this.token)
+
     }
 
-    getAccountBase() {
+    getAccountBase(): Promise<any> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': 'Client-ID 025ed260d215c47'
             })
         };
 
-        return new Promise(resolve => {
-            this.http.get(this.baseUrl + '3/account/Rototote', httpOptions).subscribe(data => {
-                resolve(data);
-            }, err => {
-                console.log(err);
-            });
-        });
-    }
+        return this.http.get(this.baseUrl + '3/account/Rototote', httpOptions).toPromise().then(ImgurApiProvider.extractData)
+    };
 
     getTags() {
         const httpOptions = {

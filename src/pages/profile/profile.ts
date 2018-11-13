@@ -16,6 +16,7 @@ export class ProfilePage {
 
     openMenu = false;
     token = "";
+    profil = [];
 
 
     user = {
@@ -108,6 +109,7 @@ export class ProfilePage {
     size = this.posts.length;
 
     constructor(public navCtrl: NavController, public ImgurApiProvider: ImgurApiProvider) {
+        this.getAccountBase();
     }
 
     togglePopupMenu() {
@@ -145,6 +147,13 @@ export class ProfilePage {
             this.token = data;
         })
     }
+
+    getAccountBase(){
+        this.ImgurApiProvider.getAccountBase().then(data => {
+            this.profil = data;
+        })
+    }
+
 
 
 }

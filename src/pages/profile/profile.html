@@ -10,11 +10,11 @@
 <ion-content padding>
     <button ion-button (click)="getToken()" *ngIf="!token">Login</button>
     <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}" *ngIf="token"></div>
-    <div id="content" *ngIf="token">
+    <div id="content">
         <div id="profile-info" padding>
 
-            <img id="profile-image" [src]="user.profileImage">
-            <h3 id="profile-name">{{user.name}}</h3>
+            <img id="profile-image" src="{{profil.avatar}}">
+            <h3 id="profile-name">{{profil.url}}</h3>
             <p>{{user.occupation}} &bull; {{posts?.length}} </p>
             <p class="profile-description">{{user.description}}</p>
         </div>
