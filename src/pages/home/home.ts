@@ -130,7 +130,7 @@ export class HomePage {
     }
 
     getHomeGallery() {
-        this.ImgurApiProvider.getAccountBase().then(data => {
+        this.ImgurApiProvider.getHomeGallery().then(data => {
             this.homeGallery = data;
         })
     }

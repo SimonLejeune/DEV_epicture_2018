@@ -18,11 +18,13 @@ export class ImgurApiProvider {
         return res["data"] || {};
     }
 
-    getToken() {
+    getToken(): Promise<any> {
         let browserRef = window.open(this.baseUrl + 'oauth2/authorize?client_id=025ed260d215c47&response_type=token', '_blank', 'location=no');
         browserRef.addEventListener("loadstart", (event: any) => {
             if ((event.url).indexOf('access_token=') !== -1) {
-                this.token = event.url.slice(event.url.indexOf('access_token=') + 'access_token='.length);
+                // this.token = event.url.slice(event.url.indexOf('access_token=') + 'access_token='.length);
+                this.token = event.url;
+                console.log("je print dans le provider : " + event.url);
                 // here is your token, now you can close the InAppBrowser
                 browserRef.close();
                 // return (this.token)
@@ -41,7 +43,7 @@ export class ImgurApiProvider {
         return this.http.get(this.baseUrl + '3/account/Rototote', httpOptions).toPromise().then(ImgurApiProvider.extractData)
     };
 
-    getTags() {
+    getTags(): Promise<any> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': 'Client-ID 025ed260d215c47'
@@ -51,7 +53,7 @@ export class ImgurApiProvider {
         return this.http.get(this.baseUrl + '3/tags', httpOptions).toPromise().then(ImgurApiProvider.extractData)
     }
 
-    getHomeGallery(){
+    getHomeGallery(): Promise<any> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': 'Client-ID 025ed260d215c47'
@@ -61,7 +63,7 @@ export class ImgurApiProvider {
         return this.http.get(this.baseUrl + '3/gallery/hot/time/0/0', httpOptions).toPromise().then(ImgurApiProvider.extractData)
     }
 
-    search(query: string): Promise<any>{
+    search(query: string): Promise<any> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': 'Client-ID 025ed260d215c47'
@@ -71,7 +73,7 @@ export class ImgurApiProvider {
         return this.http.get(this.baseUrl + '3/gallery/search/top/0?q=' + query, httpOptions).toPromise().then(ImgurApiProvider.extractData);
     }
 
-    getFavorite(){
+    getFavorite(): Promise<any> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': 'Client-ID 025ed260d215c47'

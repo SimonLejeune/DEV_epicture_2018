@@ -83,7 +83,7 @@ export class FavorisPage {
     size = this.posts.length;
 
     constructor(public navCtrl: NavController, public ImgurApiProvider: ImgurApiProvider) {
-
+        this.getFavorites();
     }
 
     togglePopupMenu() {
@@ -115,9 +115,9 @@ export class FavorisPage {
         this.togglePopupMenu();
     }
 
-    // getFavorites(){
-    //     this.ImgurApiProvider.getToken().then(data => {
-    //         this.favorites = data;
-    //     })
-    // }
+    getFavorites(){
+        this.ImgurApiProvider.getFavorite().then(data => {
+            this.favorites = data;
+        })
+    }
 }

@@ -9,6 +9,7 @@
 
 <ion-content padding>
     <button ion-button (click)="getToken()" *ngIf="!token">Login</button>
+    <p> {{token}}</p>
     <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}" *ngIf="token"></div>
     <div id="content">
         <div id="profile-info" padding>

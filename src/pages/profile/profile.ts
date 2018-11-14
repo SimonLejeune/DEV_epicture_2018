@@ -130,7 +130,7 @@ export class ProfilePage {
         this.navCtrl.setRoot(ProfilePage)
         this.togglePopupMenu();
     }
-
+x
     goToAdd() {
         this.navCtrl.setRoot(Add_ContentPage)
         this.togglePopupMenu();
@@ -144,6 +144,7 @@ export class ProfilePage {
     getToken(){
         this.ImgurApiProvider.getToken().then(data => {
             this.token = data;
+            console.log("je print dans le profile.ts : " + this.token)
         })
     }
 
