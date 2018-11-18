@@ -110,6 +110,7 @@ export class ProfilePage {
 
     constructor(public navCtrl: NavController, public ImgurApiProvider: ImgurApiProvider) {
         this.getAccountBase();
+
     }
 
     togglePopupMenu() {
@@ -146,6 +147,7 @@ x
             this.token = data;
             console.log("je print dans le profile.ts : " + this.token)
         })
+        // this.ImgurApiProvider.getToken();
     }
 
     getAccountBase(){

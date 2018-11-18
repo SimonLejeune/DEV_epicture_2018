@@ -18,8 +18,9 @@ export class ImgurApiProvider {
         return res["data"] || {};
     }
 
-    getToken(): Promise<any> {
-        let browserRef = window.open(this.baseUrl + 'oauth2/authorize?client_id=025ed260d215c47&response_type=token', '_blank', 'location=no');
+    getToken(): Promise<any>{
+        // window.open(this.baseUrl + 'oauth2/authorize?client_id=025ed260d215c47&response_type=token', '_self', 'location=no');
+        let browserRef = window.open(this.baseUrl + 'oauth2/authorize?client_id=025ed260d215c47&response_type=token', '_self', 'location=no');
         browserRef.addEventListener("loadstart", (event: any) => {
             if ((event.url).indexOf('access_token=') !== -1) {
                 // this.token = event.url.slice(event.url.indexOf('access_token=') + 'access_token='.length);
