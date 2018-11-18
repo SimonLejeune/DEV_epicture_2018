@@ -18,83 +18,9 @@ export class HomePage {
     openMenu = false;
     homeGallery = [];
 
-    posts = [
-        {
-            postImageUrl: "../../assets/imgs/3.jpg",
-            text: `I believe in being strong when everything seems to be going wrong.
-             I believe that happy girls are the prettiest girls.
-             I believe that tomorrow is another day and I believe in miracles.`,
-            date: 'November 5, 2016',
-            likes: 12,
-            comments: 4,
-            timestamp: '11h ago'
-        },
-        {
-            postImageUrl: "../../assets/imgs/4.jpg",
-            text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-            date: 'October 23, 2016',
-            likes: 30,
-            comments: 64,
-            timestamp: '30d ago'
-        },
-        {
-            postImageUrl: "../../assets/imgs/2.jpg",
-            date: 'June 28, 2016',
-            likes: 46,
-            text: `Hope is the thing with feathers that perches in the soul
-             and sings the tune without the words And never stops at all.`,
-            comments: 66,
-            timestamp: '4mo ago'
-        },
-        {
-            postImageUrl: "../../assets/imgs/7.jpg",
-            text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-            date: 'October 23, 2016',
-            likes: 30,
-            comments: 64,
-            timestamp: '30d ago'
-        },
-        {
-            postImageUrl: "../../assets/imgs/5.jpg",
-            text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-            date: 'October 23, 2016',
-            likes: 30,
-            comments: 64,
-            timestamp: '30d ago'
-        },
-        {
-            postImageUrl: "../../assets/imgs/6.jpg",
-            text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-            date: 'October 23, 2016',
-            likes: 30,
-            comments: 64,
-            timestamp: '30d ago'
-        },
-        {
-            postImageUrl: "../../assets/imgs/8.jpg",
-            text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-            date: 'October 23, 2016',
-            likes: 30,
-            comments: 64,
-            timestamp: '30d ago'
-        },
-        {
-            postImageUrl: "../../assets/imgs/avatar.jpg",
-            text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-            date: 'October 23, 2016',
-            likes: 30,
-            comments: 64,
-            timestamp: '30d ago'
-        },
-        {
-            postImageUrl: "../../assets/imgs/1.jpg",
-            text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-            date: 'October 23, 2016',
-            likes: 30,
-            comments: 64,
-            timestamp: '30d ago'
-        }
-    ];
+    doInfinite(infiniteScroll) {
+        console.log('Begin async operation');
+    }
 
     constructor(public navCtrl: NavController, public ImgurApiProvider: ImgurApiProvider) {
         this.getHomeGallery();
@@ -105,7 +31,7 @@ export class HomePage {
     }
 
     goToHome() {
-        this.navCtrl.setRoot(SearchPage)
+        this.navCtrl.setRoot(SearchPage);
         this.togglePopupMenu();
     }
 
@@ -130,7 +56,7 @@ export class HomePage {
     }
 
     getHomeGallery() {
-        this.ImgurApiProvider.getAccountBase().then(data => {
+        this.ImgurApiProvider.getHomeGallery().then(data => {
             this.homeGallery = data;
         })
     }

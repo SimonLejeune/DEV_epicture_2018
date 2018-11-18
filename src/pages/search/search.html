@@ -3,12 +3,11 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Search</ion-title>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Search</h3>
 
 
 </ion-content>

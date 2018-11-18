@@ -1,50 +1,55 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <div class="pins">
-    <ion-card class="pin" *ngFor="let post of posts">
-      <img [src]="post.postImageUrl" imageViewer>
-      <div *ngIf="post.text" class="post-description">
-        <ion-icon id="like" name="heart"></ion-icon>
-        <small>{{ post.text }}</small>
-      </div>
-    </ion-card>
-  </div>
+    <div class="pins">
+        <div *ngFor="let post of homeGallery">
+     <span *ngIf="post.images && post.images[0].type.indexOf('mp4') != 6">
+        <ion-card class="pin">
+            <img src="{{post.images[0].link}}" imageViewer>
+            <p>{{post.images[0].id}}</p>
+        </ion-card>
+         </span>
+        </div>
+    </div>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
 </ion-content>
 <ion-footer>
-  <div class="popup-menu">
-    <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
-    <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
-    <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
-      <div class="popup-menu-item" (click)="goToHome()">
-        <ion-icon name="home"></ion-icon>
-        <span>HOME</span>
-      </div>
-      <div class="popup-menu-item" (click)="goSearch()">
-        <ion-icon name="search"></ion-icon>
-        <span>SEARCH</span>
-      </div>
-      <div class="popup-menu-item" (click)="goToProfile()">
-        <ion-icon name="ionitron"></ion-icon>
-        <span>PROFILE</span>
-      </div>
-      <div class="popup-menu-item" (click)="goToFavoris()">
-        <ion-icon name="heart"></ion-icon>
-        <span>FAVORIS</span>
-      </div>
-      <div class="popup-menu-item" (click)="goToAdd()">
-        <ion-icon name="add-circle"></ion-icon>
-        <span>ADD</span>
-      </div>
+    <div class="popup-menu">
+        <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+        <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
+        <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+            <div class="popup-menu-item" (click)="goToHome()">
+                <ion-icon name="home"></ion-icon>
+                <span>HOME</span>
+            </div>
+            <div class="popup-menu-item" (click)="goSearch()">
+                <ion-icon name="search"></ion-icon>
+                <span>SEARCH</span>
+            </div>
+            <div class="popup-menu-item" (click)="goToProfile()">
+                <ion-icon name="ionitron"></ion-icon>
+                <span>PROFILE</span>
+            </div>
+            <div class="popup-menu-item" (click)="goToFavoris()">
+                <ion-icon name="heart"></ion-icon>
+                <span>FAVORIS</span>
+            </div>
+            <div class="popup-menu-item" (click)="goToAdd()">
+                <ion-icon name="add-circle"></ion-icon>
+                <span>ADD</span>
+            </div>
+        </div>
     </div>
-  </div>
 </ion-footer>

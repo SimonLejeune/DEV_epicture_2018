@@ -15,7 +15,7 @@ import {ImgurApiProvider} from "../../providers/imgur-api/imgur-api";
 export class FavorisPage {
 
     openMenu = false;
-    favorites = [];
+    favorites : any;
 
     user = {
         name: 'Maximilien Desnos',
@@ -115,9 +115,9 @@ export class FavorisPage {
         this.togglePopupMenu();
     }
 
-    // getFavorites(){
-    //     this.ImgurApiProvider.getToken().then(data => {
-    //         this.favorites = data;
-    //     })
-    // }
+     getFavorites(){
+         this.ImgurApiProvider.getToken().then(data => {
+             this.favorites = data;
+        })
+     }
 }
