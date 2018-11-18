@@ -61,7 +61,7 @@ export class ImgurApiProvider {
             })
         };
 
-        return this.http.get(this.baseUrl + '3/gallery/hot/time/0/0', httpOptions).toPromise().then(ImgurApiProvider.extractData)
+        return this.http.get(this.baseUrl + '3/gallery/hot/time/0/1', httpOptions).toPromise().then(ImgurApiProvider.extractData)
     }
 
     search(query: string): Promise<any> {

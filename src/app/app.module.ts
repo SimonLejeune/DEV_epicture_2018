@@ -14,6 +14,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {Camera} from '@ionic-native/camera'
 import {HttpClientModule} from '@angular/common/http';
 import {ImgurApiProvider} from '../providers/imgur-api/imgur-api';
+import {IonicImageLoader} from "ionic-image-loader";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {ImgurApiProvider} from '../providers/imgur-api/imgur-api';
         BrowserModule,
         HttpClientModule,
         IonicModule.forRoot(MyApp),
-        IonicImageViewerModule
+        IonicImageViewerModule,
+        IonicImageLoader.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [

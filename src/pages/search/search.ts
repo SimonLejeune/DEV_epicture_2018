@@ -62,4 +62,8 @@ export class SearchPage {
             this.tags = data;
         })
     }
+
+    setFilteredItems() {
+
+    }
 }
